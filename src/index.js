@@ -5,8 +5,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
+root.render( // injects jsx into the root div of index.html
+  <React.StrictMode> 
     <App />
   </React.StrictMode>
 );
