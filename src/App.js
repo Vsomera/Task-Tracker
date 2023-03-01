@@ -26,11 +26,20 @@ function App() {
     },
   ])
 
+
+  const deleteTask = (id) => {
+    // Deleting Tasks by filtering through tasks
+    setTasks(tasks.filter((task) => task.id !== id)) // removes task if id param matches
+    console.log("Deleted Task with ID: ", id) // logs the deleted task in the console 
+  }
+
   return (
     <div className="container">
       <Header />
-      <Tasks tasks={tasks} />
-      {/* TODO : Implement Delete Button */}
+      <Tasks 
+        tasks={tasks}           // Sends tasks list to Tasks.js component
+        onDelete={deleteTask}/> {/* Deletes a task when called with a task id from Task.js component */}
+
     </div>
   );
 }
