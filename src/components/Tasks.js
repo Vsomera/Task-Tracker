@@ -1,10 +1,13 @@
-const tasks = []
+import Task from './Task'
 
-const Tasks = () => {
+const Tasks = ({ tasks }) => {
+
     return (
-        <div>
-            {/* TODO add test tasks */}
-        </div>
+        <>
+          {tasks.map((task) => (
+            <Task key={task.id} task={task} /> // Outputting task component
+            ))}  
+        </>
     )
 }
 

@@ -12,7 +12,7 @@ export const Button = ({color, text, onClick}) => {
 }
 
 
-Button.defaultProps = { // default when colour is not defined
+Button.defaultProps = { // default when color is not defined
     color: "steelblue"
   }
   
