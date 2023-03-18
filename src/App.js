@@ -28,7 +28,12 @@ function App() {
     },
   ])
 
-
+  const addTask = (task) => {
+    const id = Math.floor(Math.random() * 1000) + 1 // generates an id number for the task
+    const newTask = { id, ...task } // creates a new object containing the task text, day, and reminder(dict)
+    setTasks([...tasks, newTask])
+    console.log(newTask)
+  }
 
   const deleteTask = (id) => {
     // Deleting Tasks by filtering through tasks
@@ -49,7 +54,7 @@ function App() {
   return (
     <div className="container">
       <Header />
-      <AddTask />
+      <AddTask onAdd={addTask}/>
         {tasks.length > 0 ? 
           <Tasks tasks={tasks}           // Sends tasks list to Tasks.js component
           onDelete={deleteTask}
