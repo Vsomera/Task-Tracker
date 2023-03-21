@@ -7,6 +7,8 @@ import AddTask from './components/AddTask'
 
 function App() {
 
+  const [showAddTask, setShowAddTask] = useState(false) // state for showing the add task form
+
   const [tasks, setTasks] = useState([ // list of tasks, setTasks is used to modify contents of the list
     {
       id: 1,
@@ -28,11 +30,16 @@ function App() {
     },
   ])
 
+  const toggleAddForm = () => {
+    // When called, toggles the Add form
+    showAddTask ? setShowAddTask(false) : setShowAddTask(true)
+  }
+
   const addTask = (task) => {
     const id = Math.floor(Math.random() * 1000) + 1 // generates an id number for the task
     const newTask = { id, ...task } // creates a new object containing the task text, day, and reminder(dict)
-    setTasks([...tasks, newTask])
-    console.log(newTask)
+    setTasks([...tasks, newTask]) // updates the current tasks state by adding the new task
+    console.log("Added a new task: ", ...newTask)
   }
 
   const deleteTask = (id) => {
@@ -53,8 +60,8 @@ function App() {
 
   return (
     <div className="container">
-      <Header />
-      <AddTask onAdd={addTask}/>
+      <Header toggleForm={toggleAddForm}/>
+      {showAddTask && <AddTask onAdd={addTask} />} {/* If showAddTask is True, show add task form */}
         {tasks.length > 0 ? 
           <Tasks tasks={tasks}           // Sends tasks list to Tasks.js component
           onDelete={deleteTask}
