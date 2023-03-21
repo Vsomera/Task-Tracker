@@ -60,7 +60,13 @@ function App() {
 
   return (
     <div className="container">
-      <Header toggleForm={toggleAddForm}/>
+      <Header 
+      toggleForm={toggleAddForm}
+      btnColor = {showAddTask ? "red" : "green"}
+      btnText = {showAddTask ? "Close" : "Add Task"}
+      />
+
+
       {showAddTask && <AddTask onAdd={addTask} />} {/* If showAddTask is True, show add task form */}
         {tasks.length > 0 ? 
           <Tasks tasks={tasks}           // Sends tasks list to Tasks.js component
