@@ -16,44 +16,49 @@ const AddTask = ({ onAdd }) => {
             return
         }
 
-        // updates the tasks state, adding the task
-        onAdd({ text, day, reminder})
+        if (!day) {
+            // if user leaves the date text box empty, alert the user
+            alert('Please add a day for the task')
+            return
+        }
 
         // resets the text fields in the form
         setText('')
         setDay('')
         setReminder(false)
 
+        // updates the tasks state, adding the task
+        onAdd({ text, day, reminder})
     }
 
     return (
-    <form className="add-form" onSubmit= { onSubmit }>
-        <div className="form-control">
-            <label>Task</label>
-            <input type="text" 
-            placeholder="Add Name of task" 
-            value={text} 
-            onChange={(e) => setText(e.target.value)} /> {/*  the value inside the texbox, returns a string */}
-        </div>
+        <form className="add-form" onSubmit= { onSubmit }>
+            <div className="form-control">
+                <label>Task</label>
+                <input type="text" 
+                placeholder="Add Name of task" 
+                value={text} 
+                onChange={(e) => setText(e.target.value)} /> {/*  the value inside the texbox, returns a string */}
+            </div>
 
-        <div className="form-control">
-            <label>Day & Time</label>
-            <input type="text" 
-            placeholder="Add Day & Time" 
-            value={day} 
-            onChange={(e) => setDay(e.target.value )} /> {/* Targets the value inside the texbox, returns a string */}
-        </div>
+            <div className="form-control">
+                <label>Day & Time</label>
+                <input type="text" 
+                placeholder="Add Day & Time" 
+                value={day} 
+                onChange={(e) => setDay(e.target.value )} /> {/* Targets the value inside the texbox, returns a string */}
+            </div>
 
-        <div className="form-control form-control-check">
-            <label>Set Reminder</label>
-            <input type="checkbox" 
-            placeholder="Add Name of task" 
-            checked = {reminder}
-            value={reminder} 
-            onChange={(e) => setReminder(e.currentTarget.checked)} /> {/* Targets the check box returning a boolean */}
-        </div>
-        <input type="submit" value='Save Task'className="btn btn-block" /> {/* When clicked, initiates onSubmit */}
-    </form>
+            <div className="form-control form-control-check">
+                <label>Set Reminder</label>
+                <input type="checkbox" 
+                placeholder="Add Name of task" 
+                checked = {reminder}
+                value={reminder} 
+                onChange={(e) => setReminder(e.currentTarget.checked)} /> {/* Targets the check box returning a boolean */}
+            </div>
+            <input type="submit" value='Save Task'className="btn btn-block" /> {/* When clicked, initiates onSubmit */}
+        </form>
     )
 }
 
