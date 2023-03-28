@@ -7,8 +7,7 @@ const Task = ({ task, onDelete, onToggle}) => {
                                                                     {/* Adds reminder class if reminder is true (adds a green select mark on div)*/}
             <h3>
                 {task.text} 
-                <FaTimes 
-                style={{ color: 'red', cursor: 'pointer' }} 
+                <FaTimes style={{ color: 'red', cursor: 'pointer' }} 
                 onClick={() => onDelete(task.id)} /> {/* Will Delete selected task on click with a task id arg*/}
             </h3> 
             <p>{task.day}</p>
