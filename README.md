@@ -1,70 +1,87 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Task Tracker
 
-## Available Scripts
+React application that keeps track of your tasks. Utilizes Json-Server for a fake backend database to send api requests for GET, POST, and DELETE requests.
 
-In the project directory, you can run:
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Run Locally
 
-### `npm test`
+Clone the project
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+  git clone https://github.com/Vsomera/Task-Tracker.git
+```
 
-### `npm run build`
+Go to the project directory
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+  cd Task-Tracker
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Install dependencies
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+  npm install
+```
 
-### `npm run eject`
+Start  server
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+  npm run server
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Start react app 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+  npm start
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+## Run on Network 
+- Shares tasks to other users connected on the network
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Change routes in App.js                     
+(You can find your IPv4 address by running ipconfig in your terminal)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+  cd /src/App.js
+```
+On line 27, 48, 63 change routes to your network address
+```bash
+// line 27
+  const res = await fetch(" http://your-ipv4address:3000/tasks") 
 
-### Code Splitting
+// line 48
+  await fetch(" http://your-ipv4address:3000", {              <-- Change this line
+      method: "POST", // sends a post request to server
+      headers: {
+        Accept: 'application.json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newTask),
+      Cache: 'default'
+  })
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Start the server on your network address                          
 
-### Analyzing the Bundle Size
+```bash
+  json-server --host [your-ipv4address] server
+```
+Start react app                       
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```bash
+  npm start
 
-### Making a Progressive Web App
+----------------------------------------------------------------------------------------
+  Local:            http://localhost:3000
+  On Your Network:  http://your-ipv4address:3000 <-- Click this in your terminal
+```
+## Screenshots
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+![App Screenshot](https://cdn.discordapp.com/attachments/838245124827774997/1098419567426015302/image.png)
 
-### Advanced Configuration
+![App Screenshot](https://cdn.discordapp.com/attachments/838245124827774997/1098419654969536522/image.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
